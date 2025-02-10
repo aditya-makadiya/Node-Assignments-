@@ -1,6 +1,7 @@
 //Create a document outlining best practices for variable declaration in modern JavaScript. Include guidelines on when to use let, var, or const, taking into consideration block scoping, hoisting, and the immutability of constants. Provide code examples to illustrate each best practice.
 
 //1. Const variable:
+
 //Use const for variables that should not be reassigned. This is useful for immutable values like
 //numbers, strings, and objects. It also helps to prevent accidental reassignment.
 //Objects declared with const can have their properties modified, but the variable cannot be reassigned.
