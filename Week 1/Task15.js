@@ -4,37 +4,23 @@
 const calculator = {
   x: 27,
   y: 9,
-  calculate: function(operation){
-    switch (operation){
-      case "add": return this.x + this.y;
-      case "subtract": return this.x - this.y;
-      case "multiply": return this.x * this.y;
-      case "divide": return this.x / this.y;
+  calculate : function (operation){
+    const calculateWithArrow= (operation) => {
+      switch (operation) {
+        case "add": return this.x + this.y;
+        case "subtract": return this.x - this.y;
+        case "multiply": return this.x * this.y;
+        case "divide": return this.x / this.y;
+      }
     }
-  },
-  calculateWithArrow: (operation) => {
-    switch (operation) {
-      case "add": return this.x + this.y;
-      case "subtract": return this.x - this.y;
-      case "multiply": return this.x * this.y;
-      case "divide": return this.x / this.y;
-    }
+    return calculateWithArrow(operation)
   }
 }
 
-console.log("== By Using Simple Function =="); //Log all the result of simple calculator function.
 
-console.log("Afetr Addition: ", calculator.calculate("add"));
-console.log("After Substract: ",calculator.calculate("subtract"));
-console.log("After Multiplication: ",calculator.calculate("multiply"));
-console.log("After Devision: ",calculator.calculate("divide"));
+console.log("Afetr Addition: ", calculator.calculate("add")); //output: 36
+console.log("After Substract: ",calculator.calculate("subtract")); //output:18
+console.log("After Multiplication: ",calculator.calculate("multiply"));  //output: 243
+console.log("After Devision: ",calculator.calculate("divide"));  //output: 3
 
-
-console.log("== By Using Arrow Function ==");  //Log all the result of Arrow calculator function.
-console.log("Afetr Addition: ", calculator.calculateWithArrow("add"));
-console.log("After Substract: ",calculator.calculateWithArrow("subtract"));
-console.log("After Multiplication: ",calculator.calculateWithArrow("multiply"));
-console.log("After Devision: ",calculator.calculateWithArrow("divide"));
-
-// Arrow function doesn't have their own this. They inherit this from the outer lexical scope. In this case outer scope will be global.
-// While using simple function it can be easily implemented.
+// Arrow function doesn't have their own this. They inherit this from the outer lexical scope. In this case Arrow method is nested therefor outer scope will be object and therefor we can access those variable.
