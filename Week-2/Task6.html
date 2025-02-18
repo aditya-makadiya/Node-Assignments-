@@ -1,0 +1,77 @@
+<!-- Create a static website that contains a start and stop button. Upon clicking the start button, something should be
+printed every 1 second. Clicking the stop button should halt this process using setInterval. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start & Stop Interval</title>
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #start {
+            background-color: green;
+            color: white;
+        }
+
+        #stop {
+            background-color: red;
+            color: white;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style> -->
+</head>
+<body>
+
+    <h1>Start & Stop Interval Example</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <div id="output"></div>
+
+    <script>
+        let interval; // Variable to store the interval ID
+        let op=0;
+
+        document.getElementById("start").addEventListener("click", function() {
+            if (!interval) { // Prevent multiple intervals from running
+                interval = setInterval(() => {
+                    const outputDiv = document.getElementById("output");
+                    op++;
+                    outputDiv.innerHTML += `<p>Output ${op}th time</p>`;
+                }, 1000);
+            }
+        });
+        //console.log(interval);
+        
+        document.getElementById("stop").addEventListener("click", function() {
+            clearInterval(interval);
+            interval = null;
+            op=0;
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = " ";
+        });
+    </script>
+
+</body>
+</html>
