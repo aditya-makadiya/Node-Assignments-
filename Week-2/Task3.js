@@ -3,13 +3,14 @@
 // It can create by IIFE(Immediately Invoked Function Expressions) which is defined and invoked immediately after its declaration.
 
 
+//example-1
 (function(x, y){
   let sum = x+y;
   console.log(sum);
   })(5,3); // output = 8
 
 
-
+//example-2 (use case)
 var counter = (function (){
   let count = 0;
   return{

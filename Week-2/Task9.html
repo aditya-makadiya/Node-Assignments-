@@ -1,0 +1,73 @@
+<!-- Create a program that makes an API call and displays all the retrieved data on a web page. Choose a public API (e.g.,
+JSONPlaceholder, OpenWeatherMap) and use the fetch function to make the API request. Also implement error handling -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetching Data</title>
+  
+</head>
+
+<body>
+  <h3>Retrieving and Fetching Data</h3>
+
+  <button onclick="fetchData()">Fetch Data</button>
+  <p id="error-message" class="error"></p>
+
+  <table id="MyTable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    <tbody id="table"></tbody>
+  </table>
+
+  <script>
+    async function fetchData() {
+      const url = 'https://jsonplaceholder.typicode.com/posts'; 
+      const errorMessage = document.getElementById("error-message");
+      errorMessage.textContent = ''; // Clear previous errors
+
+      try {
+        let data=[];
+        fetch(url).then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+            }
+          else return response.json();
+        })
+        .then(response => {
+          data=response;
+          //console.log(data);
+          displayData(data);
+        })
+        
+        
+        
+      } catch (error) {
+        console.error('Error:', error);
+        errorMessage.textContent = `Error: ${error.message}`;
+      }
+    }
+
+    function displayData(data) {
+      const table = document.getElementById('table');
+      table.innerHTML = ''; // Clear previous data
+
+      data.forEach(post => {
+        const row = `<tr>
+          <td>${post.title}</td>
+          <td>${post.body}</td>
+        </tr>`;
+        table.innerHTML += row;
+      });
+    }
+  </script>
+</body>
+
+</html>
